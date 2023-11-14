@@ -26,7 +26,7 @@ function FooterCompound() {
           <FooterLink>Account</FooterLink>
           <FooterLink>Ways to Watch</FooterLink>
           <FooterLink>Corporate Information</FooterLink>
-          <FooterLink>Netflix Originals</FooterLink>
+          <FooterLink>Newflix Originals</FooterLink>
         </FooterColumn>
         <FooterColumn>
           <FooterLink>Media Center</FooterLink>

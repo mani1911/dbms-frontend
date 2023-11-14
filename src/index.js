@@ -6,9 +6,10 @@ import { firebase } from "./lib/firebase.prod";
 
 ReactDom.render(
   <>
-    <FirebaseContext.Provider value={{ firebase }}>
-      <App />
-    </FirebaseContext.Provider>
+
+      <FirebaseContext.Provider value={{ firebase }}>
+        <App />
+      </FirebaseContext.Provider>
   </>,
   document.getElementById("root")
 );
