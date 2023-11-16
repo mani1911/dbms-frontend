@@ -21,6 +21,7 @@ import CardFeatureClose from "../components/Movies/CardFeatureClose";
 import PlayerVideo from "../components/Movies/PlayerVideo";
 import PlayerOverlay from "../components/Movies/PlayerOverlay";
 import FooterCompound from "../compounds/FooterCompound";
+import {Link} from 'react-router-dom'
 
 function BrowsePage() {
   let { series } = useContent("series");
@@ -92,6 +93,7 @@ function BrowsePage() {
           >
             Series
           </HeaderLink>
+          <Link to={{pathname : "/bookmarks"}}>Bookmarks</Link>
         </NavBar>
         <FeatureWrapper>
           <FeatureTitle className="feature-title-browse">
@@ -137,7 +139,7 @@ function BrowsePage() {
                   backgroundImage: `url(../images/${category}/${activeItem.genre}/${activeItem.slug}/large.jpg)`,
                 }}
               >
-                <CardTitle>{activeItem.title}</CardTitle>
+                <CardTitle title = {activeItem.title} desc = {activeItem.description}>{activeItem.title}</CardTitle>
                 <CardDescription>{activeItem.description}</CardDescription>
                 <CardFeatureClose onClick={() => setShowCardFeature(false)} />
                 <PlayButton onClick={() => setShowPlayer(true)}>

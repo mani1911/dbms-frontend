@@ -8,14 +8,15 @@ import Page404 from "./pages/Page404";
 import AddPage from "./pages/AddPage";
 import axios from 'axios';
 import SearchPage from "./pages/SearchPage";
+import BookmarkPage from "./pages/BookmarkPage";
 
 function App() {
-  const getDataFromOriginalBackend = async ()=> {
-    const data = await axios.get("http://localhost:8000/movies");
-    console.log(data);
-  }
+  // const getDataFromOriginalBackend = async ()=> {
+  //   const data = await axios.get("http://localhost:8000/movies");
+  //   console.log(data);
+  // }
 
-  getDataFromOriginalBackend()
+  // getDataFromOriginalBackend()
   return (
     <Router>
       <Switch>
@@ -36,6 +37,9 @@ function App() {
         </Route>
         <Route path="/search">
           <SearchPage />
+        </Route>
+        <Route path="/bookmarks">
+          <BookmarkPage />
         </Route>
         <Route path = "/*">
           <Page404/>
