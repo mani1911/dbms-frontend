@@ -21,7 +21,10 @@ import CardFeatureClose from "../components/Movies/CardFeatureClose";
 import PlayerVideo from "../components/Movies/PlayerVideo";
 import PlayerOverlay from "../components/Movies/PlayerOverlay";
 import FooterCompound from "../compounds/FooterCompound";
+import { FaSearch } from "react-icons/fa";
+import { FaComment } from "react-icons/fa";
 import {Link} from 'react-router-dom'
+import axios from "axios";
 
 function BrowsePage() {
   let { series } = useContent("series");
@@ -71,7 +74,14 @@ function BrowsePage() {
   const [showCardFeature, setShowCardFeature] = useState(false);
   const [activeItem, setActiveItem] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
+  const [comment, setComment] = useState('');
 
+
+  async function commentHandler(movie_id){
+    console.log(movie_id)
+    const data = await axios.post('http://localhost:8000/movies/comment', {movie_id, comment})
+
+  }
   return (
     <>
       <HeaderWrapper className="header-wrapper-browse">
@@ -94,6 +104,7 @@ function BrowsePage() {
             Series
           </HeaderLink>
           <Link to={{pathname : "/bookmarks"}}>Bookmarks</Link>
+          <Link to = {{pathname : "/search"}}><FaSearch style={{marginLeft: '100%', fill: 'white'}}/></Link>
         </NavBar>
         <FeatureWrapper>
           <FeatureTitle className="feature-title-browse">
@@ -139,9 +150,11 @@ function BrowsePage() {
                   backgroundImage: `url(../images/${category}/${activeItem.genre}/${activeItem.slug}/large.jpg)`,
                 }}
               >
-                <CardTitle title = {activeItem.title} desc = {activeItem.description}>{activeItem.title}</CardTitle>
+                <CardTitle title = {activeItem.title} desc = {activeItem.description} id = {activeItem.id}>{activeItem.title}</CardTitle>
                 <CardDescription>{activeItem.description}</CardDescription>
                 <CardFeatureClose onClick={() => setShowCardFeature(false)} />
+                <textarea value = {comment} placeholder="comment" onChange={e=> setComment(e.target.value)}></textarea>
+                <input type="submit" onClick={e => commentHandler(activeItem.id)}/> <br/>
                 <PlayButton onClick={() => setShowPlayer(true)}>
                   Play
                 </PlayButton>

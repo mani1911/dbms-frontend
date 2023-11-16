@@ -9,6 +9,8 @@ import AddPage from "./pages/AddPage";
 import axios from 'axios';
 import SearchPage from "./pages/SearchPage";
 import BookmarkPage from "./pages/BookmarkPage";
+import CommentPage from "./pages/CommentPage";
+
 
 function App() {
   // const getDataFromOriginalBackend = async ()=> {
@@ -40,6 +42,9 @@ function App() {
         </Route>
         <Route path="/bookmarks">
           <BookmarkPage />
+        </Route>
+        <Route path="/comments">
+          <CommentPage />
         </Route>
         <Route path = "/*">
           <Page404/>
